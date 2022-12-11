@@ -10,9 +10,8 @@ from django.urls import path
 
 router = SimpleRouter()
 
-#router.register("",AppointmentViewSet, basename= "appointments")
-router.register("lawyer",AppointmentViewSet,basename= "appointments_lawyer")
-router.register("customer",CustomerViewSet,basename= "appointments_customer")
-router.register("<int:pk>",AppointmentDetailViewSet,basename= "detail")
+router.register("lawyer", AppointmentViewSet, basename="lawyers")
+router.register("customer", CustomerViewSet, basename="customers")
+router.register("<int:pk>", AppointmentDetailViewSet, basename="appointments")
 
 urlpatterns = router.urls

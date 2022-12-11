@@ -25,6 +25,7 @@ class AppointmentViewSet(viewsets.ModelViewSet):
     queryset = Appointment.objects.all()
     serializer_class = AppointmentSerializer
 
+
 class CustomerViewSet(viewsets.ModelViewSet):
     permission_classes = [
         IsAuthenticated
@@ -33,6 +34,7 @@ class CustomerViewSet(viewsets.ModelViewSet):
 
     def get_queryset(self):
         return Appointment.objects.filter(customer=self.request.user)
+
 
 class AppointmentDetailViewSet(viewsets.ModelViewSet):
     permission_classes = [
