@@ -48,10 +48,3 @@ def test_subject_is_empty_raised_exception(db):
 def test_title_return_title(db):
     appointment = mixer.blend('appointments.Appointment', title='temp')
     assert appointment.__str__() == 'temp'
-
-
-def test_date_is_not_in_the_past(db):
-    appointment = mixer.blend('appointments.Appointment', date=datetime.datetime(2000, 1, 1))
-    with pytest.raises(ValidationError) as err:
-        appointment.full_clean()
-    assert 'past' in '\n'.join(err.value.messages)
