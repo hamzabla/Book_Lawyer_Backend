@@ -18,8 +18,8 @@ from django.urls import path, include
 from rest_framework.documentation import include_docs_urls
 from rest_framework.schemas import get_schema_view
 
-API_TITLE = ""
-API_DESCRIPTION = ""
+API_TITLE = "Book a Lawyer"
+API_DESCRIPTION = "An API for taking appointments with a lawyer"
 
 urlpatterns = [
     path("admin-PILEdARoPS/", admin.site.urls),
