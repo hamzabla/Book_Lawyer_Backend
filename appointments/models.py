@@ -1,8 +1,7 @@
 from django.contrib.auth import get_user_model
 from django.db import models
 from django.core.validators import RegexValidator
-from .validators import validate_text, validate_date
-
+from .validators import validate_text
 
 class Appointment(models.Model):
     customer = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)

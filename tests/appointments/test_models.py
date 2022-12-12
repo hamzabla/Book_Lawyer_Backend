@@ -1,7 +1,7 @@
 import pytest
 from django.core.exceptions import ValidationError
 from mixer.backend.django import mixer
-from appointments.validators import validate_text, validate_date
+from appointments.validators import validate_text
 import datetime
 
 
