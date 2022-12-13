@@ -3,6 +3,7 @@ from django.db import models
 from django.core.validators import RegexValidator
 from .validators import validate_text
 
+
 class Appointment(models.Model):
     customer = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
     title = models.CharField(max_length=30, validators=[validate_text, RegexValidator(r'^[\w\s.:;\'"]*$')])
