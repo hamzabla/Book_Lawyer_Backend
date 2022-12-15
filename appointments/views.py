@@ -3,7 +3,7 @@ from rest_framework import generics, viewsets
 from rest_framework.permissions import IsAuthenticated
 
 from appointments.models import Appointment
-from appointments.permissions import IsLawyer, IsAuthor
+from appointments.permissions import IsLawyer, IsAuthorOrNotView
 from appointments.serializers import AppointmentSerializer
 
 
@@ -28,18 +28,25 @@ class AppointmentViewSet(viewsets.ModelViewSet):
 
 class CustomerViewSet(viewsets.ModelViewSet):
     permission_classes = [
-        IsAuthenticated
+        IsAuthenticated,
+        IsAuthorOrNotView
     ]
     serializer_class = AppointmentSerializer
 
     def get_queryset(self):
         return Appointment.objects.filter(customer=self.request.user)
 
+    def perform_create(self, serializer):
+        return serializer.save(customer=self.request.user)
+
 
 class AppointmentDetailViewSet(viewsets.ModelViewSet):
     permission_classes = [
         IsLawyer,
-        IsAuthor,
+        IsAuthorOrNotView,
     ]
     queryset = Appointment.objects.all()
     serializer_class = AppointmentSerializer
+
+    def perform_create(self, serializer):
+        return serializer.save(customer=self.request.user)

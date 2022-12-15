@@ -129,7 +129,7 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 CORS_ORIGIN_WHITELIST = [
     "http://localhost:8000",  # backend
-    "http://localhost:8001",  # frontend
+    "http://localhost:3000",  # frontend
 ]
 
 REST_FRAMEWORK = {
